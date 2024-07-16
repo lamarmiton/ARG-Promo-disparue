@@ -1,0 +1,75 @@
+body {
+    background-color: #0d0d0d; /* Fond sombre */
+    color: #e0e0e0; /* Texte clair pour contraster avec le fond */
+    font-family: 'Courier New', Courier, monospace; /* Police évoquant le code ou les messages secrets */
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #ff4500; /* Rouge orangé pour attirer l'attention */
+    text-align: center;
+}
+
+p {
+    font-size: 18px;
+    text-align: justify;
+    margin: 20px 0;
+}
+
+/* Animation pour faire clignoter le titre */
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+h1 {
+    animation: blink 2s infinite;
+}
+
+/* Style pour les liens */
+a {
+    color: #ff4500;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+body {
+    background-color: #0a0a0a;
+    color: #e0e0e0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#formulaire-dechiffrement {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #000;
+    margin: 20px auto;
+    width: fit-content;
+}
+
+#formulaire-dechiffrement label {
+    color: #ff0000;
+}
+
+#formulaire-dechiffrement input, #formulaire-dechiffrement button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#formulaire-dechiffrement button:hover {
+    background-color: #444;
+}
+
+footer p {
+    text-align: center;
+    color: #666;
+}
