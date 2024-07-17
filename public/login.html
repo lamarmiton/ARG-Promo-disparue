@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1 class="chiffre" >Ne les ecoutez pas</h1>
+
+    <nav class="navbar">
+        <div class="menu-burger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="login.html">Connexion</a></li>
+            <!-- Ajoutez d'autres liens de navigation ici -->
+        </ul>
+    </nav>
+
+    <h2>Page de Connexion</h2>
+    <form id="loginForm">
+        <div>
+            <label for="user">Nom d'utilisateur:</label>
+            <input type="text" id="user" name="user" required>
+        </div>
+        <div>
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Connexion</button>
+    </form>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = {
+                user: document.getElementById('user').value,
+                password: document.getElementById('password').value
+            };
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+
+        function toggleMenu() {
+            var navLinks = document.getElementById("navLinks");
+            if (navLinks.style.display === "block") {
+                navLinks.style.display = "none";
+            } else {
+                navLinks.style.display = "block";
+            }
+}
+    </script>
+</body>
+</html>

@@ -11,10 +11,21 @@
     <div class="vhs-effect" id="vhsEffect"></div>
     <video id="vhsVideo" style="display:none; position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%; z-index: 9999" autoplay muted>
         <source src="img/vhsnoise.mp4" type="video/mp4">
-        Votre navigateur ne supporte pas la balise vidéo.
     </video>
 
     <h1 class="chiffre" >Ar yrf rpbhgrm cnf</h1>
+
+    <nav class="navbar">
+        <div class="menu-burger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Accueil</a></li>
+        </ul>
+    </nav>
+
     <p class="chiffre">Pundhr wbhe rfg har yhggr. Yrf crafrrf fr obhfphyrag, punbgvdhrf, vapbagebynoyrf. Wr zr creqf qnaf ha ynolevagur fnaf sva qr "rg fv" rg qr ertergf. Yrf ibvk, ryyrf ar fr gnvfrag wnznvf, zhezhenag qrf irevgrf dhr wr ershfr q'ragraqer.
 
         Yrf traf nhgbhe qr zbv, vyf ar ibvrag cnf. Vyf ar pbzceraarag cnf. Vyf fbhevrag, ivirag, erfcverag... Rg zbv, wr fhssbdhr fbhf yr cbvqf q'har ernyvgr dhr wr ar crhk av npprcgre av shve. Pundhr gragngvir qr pbaarkvba rfg ha enccry pehry qr zba vfbyrzrag.
@@ -38,9 +49,10 @@
     <footer>
         <p>© 2012 0b1101</p>
 
+        <!-- Je suis le nombre d'heures sur une horloge dans certains pays, le nombre de cycles lunaires dans une année, et le nombre de disciples avec leur maître lors du dernier repas.-->
         <div id="formulaire-dechiffrement">
             <form id="form-dechiffrement">
-                <label for="cle-dechiffrement" class="chiffre">Pyr n ragere : (P'rfg gervmr ovra fhe)</label>
+                <label for="cle-dechiffrement" class="chiffre">Pyr n ragere :</label>
                 <input type="number" id="cle-dechiffrement" name="cle-dechiffrement" min="0" step="1">
             </form>
         </div>
