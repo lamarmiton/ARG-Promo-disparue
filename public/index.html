@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div class="vhs-scanlines"></div>
+    <div class="vhs-effect" id="vhsEffect"></div>
+    <video id="vhsVideo" style="display:none; position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%; z-index: 9999" autoplay muted>
+        <source src="img/vhsnoise.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas la balise vidéo.
+    </video>
+
     <h1 class="chiffre" >Ar yrf rpbhgrm cnf</h1>
     <p class="chiffre">Pundhr wbhe rfg har yhggr. Yrf crafrrf fr obhfphyrag, punbgvdhrf, vapbagebynoyrf. Wr zr creqf qnaf ha ynolevagur fnaf sva qr "rg fv" rg qr ertergf. Yrf ibvk, ryyrf ar fr gnvfrag wnznvf, zhezhenag qrf irevgrf dhr wr ershfr q'ragraqer.
 
@@ -28,16 +35,15 @@
         
         Wr fhvf vpv, znvagranag, rg p'rfg gbhg pr dhv pbzcgr. Yrf ibvk crhirag pevre, yrf qrzbaf crhirag ehtve, znvf wr erfgr qrobhg. Wr fhvf ha threevre, ha cbrgr, ha erirhe. Rg wr pbagvahrenv q'rpever, qr ivier, qr erfcvere.</p>
 
-    <div id="formulaire-dechiffrement">
-        <form id="form-dechiffrement">
-            <label for="cle-dechiffrement" class="chiffre">Pyr n ragere : (P'rfg gervmr ovra fhe)</label>
-            <input type="number" id="cle-dechiffrement" name="cle-dechiffrement" min="0" step="1">
-        </form>
-    </div>
-
     <footer>
         <p>© 2012 0b1101</p>
 
+        <div id="formulaire-dechiffrement">
+            <form id="form-dechiffrement">
+                <label for="cle-dechiffrement" class="chiffre">Pyr n ragere : (P'rfg gervmr ovra fhe)</label>
+                <input type="number" id="cle-dechiffrement" name="cle-dechiffrement" min="0" step="1">
+            </form>
+        </div>
 
 <script src="js/dechiffre.js"></script>
 

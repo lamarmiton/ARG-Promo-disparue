@@ -24,6 +24,18 @@ function demanderCleEtDechiffrer() {
     }
 }
 
+document.getElementById('formulaire-dechiffrement').addEventListener('submit', function(e) {
+    e.preventDefault(); // Empêche la soumission réelle du formulaire
+
+    var video = document.getElementById('vhsVideo');
+    video.style.display = 'block'; // Affiche la vidéo
+    video.play(); // Commence à jouer la vidéo
+
+    video.onended = function() {
+        video.style.display = 'none'; // Cache la vidéo une fois qu'elle est terminée
+    };
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('form-dechiffrement').addEventListener('submit', function(e) {
         e.preventDefault();

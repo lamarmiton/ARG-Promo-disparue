@@ -1,9 +1,92 @@
+@keyframes noise {
+    0%, 100% { clip-path: inset(100%); }
+    10%, 30%, 50%, 70% { clip-path: inset(0% round 10%); }
+    20%, 40%, 60%, 80% { clip-path: inset(0% round 5%); }
+}
+
+@keyframes scanlines {
+    0%, 100% { transform: translateY(0%); }
+    50% { transform: translateY(100%); }
+}
+
+@keyframes vhs {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(1deg); }
+}
+
+.vhs-scanlines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0) 1px,
+        rgba(0, 0, 0, 0.1) 1px,
+        rgba(0, 0, 0, 0.1) 3px
+    );
+    animation: scanlines 5s infinite linear;
+}
+
+@keyframes vhsBug {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1) skew(0deg);
+        filter: hue-rotate(0deg);
+    }
+    25% {
+        opacity: 0.75;
+        transform: scale(1.1) skew(-10deg);
+        filter: hue-rotate(20deg);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.9) skew(10deg);
+        filter: hue-rotate(-20deg);
+    }
+    75% {
+        opacity: 0.75;
+        transform: scale(1.05) skew(-5deg);
+        filter: hue-rotate(10deg);
+    }
+}
+
+.vhs-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 9999;
+    display: none; /* Caché par défaut */
+    animation: vhsBug .5s forwards;
+}
+
 body {
     background-color: #0d0d0d; /* Fond sombre */
     color: #e0e0e0; /* Texte clair pour contraster avec le fond */
     font-family: 'Courier New', Courier, monospace; /* Police évoquant le code ou les messages secrets */
     margin: 0;
     padding: 20px;
+    /* Bruit de fond */
+    background: repeating-linear-gradient(
+        transparent,
+        transparent 1px,
+        rgba(255, 255, 255, 0.1) 1px,
+        rgba(255, 255, 255, 0.1) 2px
+    );
+
+    /* Ondulation */
+    animation: vhs 5s infinite linear;
+
+    /* Décalage des couleurs */
+    color: rgba(255, 0, 0, 0.7);
+    text-shadow:
+        1px 0 rgba(0, 255, 255, 0.7),
+        -1px 0 rgba(0, 255, 0, 0.7);
 }
 
 h1 {
