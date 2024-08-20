@@ -53,6 +53,12 @@
     }
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 /* Style de base pour la barre de navigation */
 .navbar {
     display: flex;
@@ -87,6 +93,25 @@
     height: 3px;
     background-color: white;
     margin: 5px;
+}
+
+.user-profile {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 @keyframes shake {
@@ -135,9 +160,137 @@
     width: 100%;
     height: 100%;
     background-color: black;
-    z-index: 9999;
+    z-index: -1;
     display: none; /* Caché par défaut */
     animation: vhsBug .5s forwards;
+}
+
+body.profile-page {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.profile-page main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1f1f1f;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.profile-page h2 {
+    color: #e0e0e0;
+}
+
+.profile-page .profile-picture {
+    width: 120px; /* Réduire la taille de l'image */
+    height: 120px; /* Réduire la taille de l'image */
+    border-radius: 50%; /* Pour une image de profil ronde */
+    display: block;
+    margin: 0 auto 20px; /* Centrer l'image et ajouter un espace en bas */
+}
+
+.profile-page section {
+    margin-bottom: 20px;
+}
+
+body.profile-page {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.search-section {
+    background-color: #1f1f1f;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.search-form {
+    display: inline-block;
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-input {
+    width: 70%;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.search-button {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: #e0e0e0;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-button:hover {
+    background-color: #555;
+}
+
+.profile-page main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1f1f1f;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.profile-page h2 {
+    color: #e0e0e0;
+}
+
+.profile-page .profile-picture {
+    width: 120px; /* Réduire la taille de l'image */
+    height: 120px; /* Réduire la taille de l'image */
+    border-radius: 50%; /* Pour une image de profil ronde */
+    display: block;
+    margin: 0 auto 20px; /* Centrer l'image et ajouter un espace en bas */
+}
+
+.profile-page section {
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+    width: 100%;
+    position: relative;
+    bottom: 0;
 }
 
 body {
@@ -162,6 +315,10 @@ body {
     text-shadow:
         1px 0 rgba(0, 255, 255, 0.7),
         -1px 0 rgba(0, 255, 0, 0.7);
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 h1 {
@@ -199,6 +356,8 @@ body {
     color: #e0e0e0;
     font-family: 'Courier New', Courier, monospace;
 }
+
+
 
 #formulaire-dechiffrement {
     background-color: #222;

@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/status', {
+                credentials: 'include'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.loggedIn) {
+                    window.location.href = 'index.html';
+                }
+            })
+            .catch(error => console.error('Erreur:', error));
+        });
+    </script>
 </head>
 <body>
 
@@ -18,8 +32,6 @@
         </div>
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Accueil</a></li>
-            <li><a href="login.html">Connexion</a></li>
-            <!-- Ajoutez d'autres liens de navigation ici -->
         </ul>
     </nav>
 
@@ -34,8 +46,7 @@
             <input type="password" id="password" name="password" required>
         </div>
         <button type="submit">Connexion</button>
-    </form>
-    <script>
+    </form><script>
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = {
@@ -45,27 +56,34 @@
             fetch('/login', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(formData),
+                credentials: 'include'
             })
-            .then(response => response.text())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erreur réseau');
+                }
+                const contentType = response.headers.get('content-type');
+                if (contentType && contentType.includes('application/json')) {
+                    return response.json();
+                } else {
+                    throw new Error('La réponse du serveur n\'est pas au format JSON');
+                }
+            })
             .then(data => {
-                alert(data);
+                if (data.success) {
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Nom d\'utilisateur ou mot de passe incorrect');
+                }
             })
-            .catch((error) => {
-                console.error('Error:', error);
+            .catch(error => {
+                console.error('Erreur:', error);
+                alert('Une erreur est survenue lors de la connexion');
             });
         });
-
-        function toggleMenu() {
-            var navLinks = document.getElementById("navLinks");
-            if (navLinks.style.display === "block") {
-                navLinks.style.display = "none";
-            } else {
-                navLinks.style.display = "block";
-            }
-}
     </script>
 </body>
 </html>

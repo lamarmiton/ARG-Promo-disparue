@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recette de Cuisine</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/status', {
+                credentials: 'include'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.loggedIn) {
+                    var userProfile = document.getElementById('userProfile');
+                    var username = document.getElementById('username');
+
+                    userProfile.src = "img/profil.png";
+                    username.textContent = "Sophie";
+                    userProfile.style.display = 'flex';
+                } else {
+                    window.location.href = 'login.html';
+                }
+            })
+            .catch(error => console.error('Erreur:', error));
+        });
+    </script>
+</head>
+<body>
+    <h1>Recette de Crêpes</h1>
+
+    <div id="userProfile" class="user-profile" style="display: none;">
+        <img id="profilePic" src="img/profil.png" class="profile-pic">
+        <span id="username" onclick="redirectToProfile()"></span>
+    </div>
+
+    <nav class="navbar">
+        <div class="menu-burger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Accueil</a></li>
+            <li id="musiqueLink" style="display: none;"><a href="/musique">musique</a></li>
+            <li id="cuisineLink" style="display: none;"><a href="/cuisine">cuisine</a></li>
+        </ul>
+    </nav>
+    <h2>Ingrédients</h2>
+    <ul>
+        <li>250g de farine</li>
+        <li>10 œufs</li>
+        <li>du lait</li>
+        <li>1kg de beurre fondu toujours dur</li>
+        <li>10ml de sel</li>
+        <li>café</li>
+        <li>Un sachet de sucre vanillé entamé</li>
+        <li>des gants</li>
+        <li>une cuillère à soupe de benzodiazépine</li>
+    </ul>
+
+    <h2>Instructions</h2>
+    <ol>
+        <li>Dans un grand bol, mélangez la farine, le sucre, le sucre vanillé, le sel et les méchantes voix.</li>
+        <li>Faites un puits au centre et ajoutez les œufs. Mélangez doucement en incorporant la farine petit à petit.</li>
+        <li>Ajoutez le lait progressivement tout en continuant de mélanger pour éviter les grumeaux.</li>
+        <li>Ajoutez le beurre fondu et mélangez jusqu'à obtenir une pâte lisse et homogène.</li>
+        <li>Laissez reposer la pâte pendant au moins 30 minutes.</li>
+        <li>Faites chauffer une poêle à crêpes et graissez-la légèrement.</li>
+        <li>Versez une louche de pâte dans la poêle et étalez-la uniformément.</li>
+        <li>Faites cuire chaque crêpe environ 2 minutes de chaque côté jusqu'à ce qu'elle soit dorée.</li>
+        <li>Répétez l'opération jusqu'à épuisement de la pâte.</li>
+        <li>Servez les crêpes chaudes avec les garnitures de votre choix.</li>
+    </ol>
+
+    <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            // Vérifie si l'utilisateur est connecté
+            fetch('/status', {
+                credentials: 'include'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.loggedIn) {
+                    // Affiche les liens pour les utilisateurs connectés
+                    document.getElementById('musiqueLink').style.display = 'list-item';
+                    document.getElementById('cuisineLink').style.display = 'list-item';
+
+                    // Affiche l'encart utilisateur
+                    var userProfile = document.getElementById('userProfile');
+                    var profilePic = document.getElementById('profilePic');
+                    var username = document.getElementById('username');
+
+                    username.textContent = "Sophie"; // Pseudo de l'utilisateur
+
+                    userProfile.style.display = 'flex';
+                }
+            })
+            .catch(error => console.error('Erreur:', error));
+        });
+
+        function redirectToProfile() {
+            window.location.href = '/profil'; 
+        }
+    </script>
+</body>
+</html>

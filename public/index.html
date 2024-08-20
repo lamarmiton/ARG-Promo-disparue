@@ -7,11 +7,15 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="vhs-scanlines"></div>
     <div class="vhs-effect" id="vhsEffect"></div>
     <video id="vhsVideo" style="display:none; position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%; z-index: 9999" autoplay muted>
         <source src="img/vhsnoise.mp4" type="video/mp4">
     </video>
+
+    <div id="userProfile" class="user-profile" style="display: none;">
+        <img id="profilePic" src="img/profil.png" class="profile-pic">
+        <span id="username" onclick="redirectToProfile()"></span>
+    </div>
 
     <h1 class="chiffre" >Ar yrf rpbhgrm cnf</h1>
 
@@ -23,6 +27,8 @@
         </div>
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Accueil</a></li>
+            <li id="musiqueLink" style="display: none;"><a href="/musique">musique</a></li>
+            <li id="cuisineLink" style="display: none;"><a href="/cuisine">cuisine</a></li>
         </ul>
     </nav>
 
@@ -58,6 +64,47 @@
         </div>
 
 <script src="js/dechiffre.js"></script>
+<script>
+    fetch('/status', {
+    credentials: 'include'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.loggedIn) {
+        document.getElementById('guest-content').style.display = 'none';
+        document.getElementById('user-content').style.display = 'block';
+        } else {
+        document.getElementById('guest-content').style.display = 'block';
+        document.getElementById('user-content').style.display = 'none';
+        }
+    })
+    .catch(error => console.error('Erreur:', error));
+
+    document.addEventListener('DOMContentLoaded', function() {
+            fetch('/status', {
+                credentials: 'include'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.loggedIn) {
+                    document.getElementById('musiqueLink').style.display = 'list-item';
+                    document.getElementById('cuisineLink').style.display = 'list-item';
+                    var userProfile = document.getElementById('userProfile');
+                    var profilePic = document.getElementById('profilePic');
+                    var username = document.getElementById('username');
+
+                    username.textContent = "Sophie";
+
+                    userProfile.style.display = 'flex';
+                }
+            })
+            .catch(error => console.error('Erreur:', error));
+        });
+    
+        function redirectToProfile() {
+            window.location.href = '/profil'; 
+        }
+  </script>
 
 </body>
 </html>

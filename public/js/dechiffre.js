@@ -6,6 +6,26 @@ function toggleMenu() {
         navLinks.style.display = "block";
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Vérifie si l'utilisateur est connecté
+    fetch('/status', {
+        credentials: 'include'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.loggedIn) {
+            var userProfile = document.getElementById('userProfile');
+            var username = document.getElementById('username');
+
+            userProfile.src = "img/profil.png";
+            username.textContent = "Sophie";
+            userProfile.style.display = 'flex';
+        }
+    })
+    .catch(error => console.error('Erreur:', error));
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     // Vérifie si la réponse a déjà été donnée correctement
     if (localStorage.getItem('enigmeResolue') === 'true') {
@@ -17,13 +37,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         var formulaire = document.getElementById('formulaire-dechiffrement');
         formulaire.parentNode.removeChild(formulaire);
-        var navLinks = document.getElementById('navLinks');
-        var listItem = document.createElement('li');
-        var link = document.createElement('a');
-        link.href = 'login.html';
-        link.textContent = 'Connexion'; 
-        listItem.appendChild(link);
-        navLinks.appendChild(listItem);
+
+        // Vérifie si l'utilisateur est connecté
+        fetch('/status', {
+            credentials: 'include'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.loggedIn) {
+                var navLinks = document.getElementById('navLinks');
+                var listItem = document.createElement('li');
+                var link = document.createElement('a');
+                link.href = 'login.html';
+                link.textContent = 'Connexion'; 
+                listItem.appendChild(link);
+                navLinks.appendChild(listItem);
+            }
+        })
+        .catch(error => console.error('Erreur:', error));
     }
 });
 
