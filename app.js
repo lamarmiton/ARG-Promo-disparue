@@ -3,17 +3,10 @@ const session = require('express-session');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const fs = require('fs');
+const db = require('./dbSetup');
 
 const app = express();
 const port = 3000;
-
-const db = new sqlite3.Database('./dblite.db', (err) => {
-  if (err) {
-    console.error('Erreur lors de l\'ouverture de la base de données', err.message);
-  } else {
-    console.log('Connecté à la base de données SQLite.');
-  }
-});
 
 app.use(session({
   secret: 'EC779F39-F57E-4AB9-A8A4-E8027F367418',
@@ -21,11 +14,6 @@ app.use(session({
   saveUninitialized: true,
   cookie: { secure: false }
 }));
-
-db.serialize(() => {
-  db.run("CREATE TABLE IF NOT EXISTS account (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT NOT NULL, password TEXT NOT NULL)");
-  db.run("INSERT INTO account (user, password) VALUES ('admin', 'promotion')");
-});
 
 app.use(express.json()); 
 app.use(express.static('public'));
@@ -49,14 +37,58 @@ app.get('/', (req, res) => {
 app.post('/login', (req, res) => {
   const { user, password } = req.body;
   db.get("SELECT * FROM account WHERE user = ?", [user], (err, row) => {
-    console.log(row);
     if (err) {
       res.status(500).send('Erreur de serveur');
-    } else if (row && row.password === password) {
+    } else if (!row) {
+      // Nom d'utilisateur incorrect
+      db.get("SELECT message FROM error_message WHERE id = 1", (err, errorRow) => {
+        if (err) {
+          res.status(500).send('Erreur de serveur');
+        } else {
+          const errorMessage = errorRow ? errorRow.message : 'Nom d\'utilisateur incorrect';
+          res.send({ "success" : false, "message" : errorMessage });
+        }
+      });
+    } else if (row.password !== password) {
+      // Mot de passe incorrect
+      req.session.loginAttempts = (req.session.loginAttempts || 0) + 1;
+      if (password.length <  row.password.length - 1) {
+        // Message d'erreur pour mot de passe trop court
+        db.get("SELECT message FROM error_message WHERE id = 3", (err, errorRow) => {
+          if (err) {
+            res.status(500).send('Erreur de serveur : ' + err);
+          } else {
+            const errorMessage = errorRow.message
+            res.send({ "success" : false, "message" : errorMessage });
+          }
+        });
+      }
+      else if (req.session.loginAttempts >= 3) {
+        // Selectionne un message d'erreur aléatoire toutes les 3 tentatives
+        db.get("SELECT message FROM error_message WHERE id NOT IN (?, ?, ?) ORDER BY RANDOM() LIMIT 1", [1, 2, 3], (err, errorRow) => {
+          if (err) {
+            res.status(500).send('Erreur de serveur : ' + err);
+          } else {
+            const errorMessage = errorRow.message
+            res.send({ "success" : false, "message" : errorMessage });
+          }
+        });
+      } else {
+        // Message d'erreur pour mot de passe incorrect
+        db.get("SELECT message FROM error_message WHERE id = 2", (err, errorRow) => {
+          if (err) {
+            res.status(500).send('Erreur de serveur : ' + err);
+          } else {
+            const errorMessage = errorRow.message
+            res.send({ "success" : false, "message" : errorMessage });
+          }
+        });
+      }
+    } else {
+      // Réinitialiser le compteur de tentatives de connexion en cas de succès
+      req.session.loginAttempts = 0;
       req.session.userId = row.id;
       res.send({ "success" : true, "message" : 'Connexion réussie' });
-    } else {
-      res.status(401).send({ "success" : false, "message" : 'Nom d\'utilisateur ou mot de passe incorrect' });
     }
   });
 });
@@ -86,10 +118,6 @@ app.get('/search', checkAuth, (req, res) => {
     if (err) {
       return res.status(500).send('Erreur de serveur');
     }
-    
-    console.log(files);
-    console.log(profilesDir);
-    console.log(req.query);
     const closestMatch = files.find(file => file.toLowerCase().includes(query));
 
     console.log(closestMatch);
