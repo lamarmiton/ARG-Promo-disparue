@@ -131,6 +131,10 @@ app.get('/search', checkAuth, (req, res) => {
   });
 });
 
+app.get('/photos', checkAuth, (req, res) => {
+  res.sendFile(__dirname + '/public/photos/photos.html');
+});
+
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
 });
