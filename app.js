@@ -87,7 +87,6 @@ app.post('/login', (req, res) => {
         });
       }
     } else {
-      // Réinitialiser le compteur de tentatives de connexion en cas de succès
       req.session.loginAttempts = 0;
       req.session.userId = row.id;
       res.send({ "success" : true, "message" : 'Connexion réussie' });

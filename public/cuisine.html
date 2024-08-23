@@ -76,23 +76,19 @@
 
     <script>
             document.addEventListener('DOMContentLoaded', function() {
-            // Vérifie si l'utilisateur est connecté
             fetch('/status', {
                 credentials: 'include'
             })
             .then(response => response.json())
             .then(data => {
                 if (data.loggedIn) {
-                    // Affiche les liens pour les utilisateurs connectés
                     document.getElementById('musiqueLink').style.display = 'list-item';
                     document.getElementById('cuisineLink').style.display = 'list-item';
-
-                    // Affiche l'encart utilisateur
                     var userProfile = document.getElementById('userProfile');
                     var profilePic = document.getElementById('profilePic');
                     var username = document.getElementById('username');
 
-                    username.textContent = "Sophie"; // Pseudo de l'utilisateur
+                    username.textContent = "Sophie";
 
                     userProfile.style.display = 'flex';
                 }
