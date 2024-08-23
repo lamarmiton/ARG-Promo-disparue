@@ -50,6 +50,8 @@ app.post('/login', (req, res) => {
         }
       });
     } else if (row.password !== password) {
+      //Nombre de lettres en commun avec le mot de passe
+      const lettersInCommon = row.password.split('').filter((letter, index) => letter === password[index]).length;
       // Mot de passe incorrect
       req.session.loginAttempts = (req.session.loginAttempts || 0) + 1;
       if (password.length <  row.password.length - 1) {
@@ -59,7 +61,7 @@ app.post('/login', (req, res) => {
             res.status(500).send('Erreur de serveur : ' + err);
           } else {
             const errorMessage = errorRow.message
-            res.send({ "success" : false, "message" : errorMessage });
+            res.send({ "success" : false, "message" : errorMessage, "letters" : lettersInCommon });
           }
         });
       }
@@ -70,7 +72,7 @@ app.post('/login', (req, res) => {
             res.status(500).send('Erreur de serveur : ' + err);
           } else {
             const errorMessage = errorRow.message
-            res.send({ "success" : false, "message" : errorMessage });
+            res.send({ "success" : false, "message" : errorMessage, "letters" : lettersInCommon });
           }
         });
       } else {
@@ -80,7 +82,7 @@ app.post('/login', (req, res) => {
             res.status(500).send('Erreur de serveur : ' + err);
           } else {
             const errorMessage = errorRow.message
-            res.send({ "success" : false, "message" : errorMessage });
+            res.send({ "success" : false, "message" : errorMessage, "letters" : lettersInCommon});
           }
         });
       }

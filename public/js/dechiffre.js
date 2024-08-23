@@ -45,13 +45,19 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (!data.loggedIn) {
-                var navLinks = document.getElementById('navLinks');
-                var listItem = document.createElement('li');
+                var iconContainer = document.createElement('div');
+                iconContainer.classList.add('login-icon-container');
+                
                 var link = document.createElement('a');
                 link.href = 'login.html';
-                link.textContent = 'Connexion'; 
-                listItem.appendChild(link);
-                navLinks.appendChild(listItem);
+                
+                var icon = document.createElement('i');
+                icon.classList.add('fas', 'fa-sign-in-alt'); 
+                
+                link.appendChild(icon);
+                iconContainer.appendChild(link);
+                
+                document.body.appendChild(iconContainer);
             }
         })
         .catch(error => console.error('Erreur:', error));

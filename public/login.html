@@ -50,7 +50,9 @@
                     <input type="password" id="password" name="password" required>
                 </div>
                 <button type="submit">Connexion</button>
-                <div class="loading-spinner" id="loadingSpinner"></div>
+                <div class="loading-spinner" id="loadingSpinner">
+                    <div id="loadingPercentage">0%</div>
+                </div>
                 <div id="error-message" class="error-message"></div>
             </form>
         </div>
@@ -70,10 +72,26 @@
         const errorMessage = document.getElementById('error-message');
         errorMessage.style.display = 'none';
         const spinner = document.getElementById('loadingSpinner');
-    
-        // Affiche l'animation de chargement
+        const percentage = document.getElementById('loadingPercentage');
+
         spinner.style.display = 'block';
-    
+        percentage.style.display = 'block';
+
+        let start = 0;
+        const duration = 1000; 
+        const increment = 100 / (duration / 28); 
+        let stopAnimation = false;
+
+        const animatePercentage = () => {
+            if (start <= 100 && !stopAnimation) {
+                percentage.textContent = `${Math.round(start)}%`;
+                start += increment;
+                setTimeout(animatePercentage, 100);
+            }
+        };
+
+        animatePercentage();
+
         fetch('/login', {
             method: 'POST',
             headers: {
@@ -84,22 +102,23 @@
         })
         .then(response => response.json())
         .then(data => {
-            // Masque l'animation de chargement après 1 seconde
+            const letters = data.letters;
             setTimeout(function() {
+                stopAnimation = true;
                 spinner.style.display = 'none';
-    
+                percentage.style.display = 'none';
                 if (data.success) {
                     window.location.href = 'index.html';
                 } else {
                     errorMessage.textContent = data.message;
                     errorMessage.style.display = 'block';
                 }
-            }, 1000);
+            }, letters * 400 + 100);
         })
         .catch(error => {
-            // Masque l'animation de chargement après 1 seconde en cas d'erreur
             setTimeout(function() {
                 spinner.style.display = 'none';
+                percentage.style.display = 'none';
                 errorMessage.textContent = 'Une erreur est survenue. Veuillez réessayer.';
                 errorMessage.style.display = 'block';
             }, 1000);
