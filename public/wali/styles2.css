@@ -1,0 +1,100 @@
+
+/* Define color variables */
+
+:root {
+--primary-color: #3f51b5; /* Indigo */
+--accent-color: #e91e63; /* Pink */
+--warn-color: #f44336;   /* Red */
+
+--background-color: #fafafa; /* Light gray background */
+--text-color: #212121; /* Dark gray text */
+}
+
+/* Apply color palette to components */
+body {
+background-color: var(--background-color);
+color: var(--text-color);
+}
+
+.md-button {
+background-color: var(--primary-color);
+color: #ffffff;
+border: none;
+padding: 8px 16px;
+font-size: 14px;
+cursor: pointer;
+}
+
+.md-button.md-raised {
+box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.md-button.md-accent {
+background-color: var(--accent-color);
+}
+
+.md-button.md-warn {
+background-color: var(--warn-color);
+}
+
+/* Example for card component */
+.md-card {
+background-color: #ffffff;
+border: 1px solid #e0e0e0;
+border-radius: 4px;
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+padding: 16px;
+}
+/* Typography styles */
+body, button, input, textarea, select {
+font-family: Roboto, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+font-weight: 400;
+line-height: 1.2;
+}
+
+h1 { font-size: 24px; }
+h2 { font-size: 20px; }
+h3 { font-size: 18px; }
+h4 { font-size: 16px; }
+h5 { font-size: 14px; }
+h6 { font-size: 12px; }
+
+/* Example for input fields */
+.md-input {
+border: 1px solid #bdbdbd;
+border-radius: 4px;
+padding: 8px;
+font-size: 14px;
+}
+
+.md-input:focus {
+border-color: var(--primary-color);
+outline: none;
+}
+
+/* Example for toolbar */
+.md-toolbar {
+background-color: var(--primary-color);
+color: #ffffff;
+padding: 8px 16px;
+font-size: 20px;
+}
+
+/* Flex container */
+.md-container {
+display: flex;
+flex-direction: column;
+padding: 16px;
+}
+
+/* Grid layout */
+.md-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 16px;
+}

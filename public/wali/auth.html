@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <!-- Angular Material CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.24/angular-material.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+        <title sg-default="Wali-m">Wali-m</title>
+
+        <link href="styles.css" rel="stylesheet" type="text/css">
+        <link href="styles2.css" rel="stylesheet" type="text/css">
+        <style>
+            /* Define the .md-whiteframe-3dp class */
+            .md-whiteframe-3dp {
+                box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.14), 0px 4px 10px rgba(0, 0, 0, 0.12), 0px 1px 18px rgba(0, 0, 0, 0.20);
+            }
+        </style>
+        
+      <style title="Dynamic-Generated-by-mdColors"></style>
+
+        
+    </head>
+
+    <body class="main ng-scope" aria-owns="select_listbox_48">
+
+        <noscript aria-hidden="false">
+          <div layout-fill="layout-fill" layout-align="center center" layout="column">
+            <div class="md-padding">
+              SOGo requiert l'utilisation de Javascript. Veuillez vous assurer que cette option est disponible et activ&#233;e dans votre fureteur.
+            </div>
+            <div>
+              <a href="../SOGo" class="md-button">
+                R&#233;essayer
+              </a>
+            </div>
+          </div>
+        </noscript>
+
+        
+          
+
+          
+          
+  <script type="text/javascript">
+    var cookieUsername = "";
+    var language = 'French';
+  </script>
+
+  
+  <main layout-fill="layout-fill" ng-controller="LoginController as app" layout-gt-md="row" class="view md-default-theme md-background md-hue-1 md-bg layout-fill ng-scope layout-gt-md-row layout-align-gt-md-center-start" ui-view="login" layout-align-gt-md="center start" aria-hidden="false">
+    <md-content class="_md layout-align-start-stretch layout-column flex-100" flex="100" ng-show="app.showLogin" layout-align="start stretch" layout="column" aria-hidden="false" style="">
+      
+      <div class="md-whiteframe-3dp layout-gt-md-row layout-column flex-100" id="loginContent" flex="100" layout="column" layout-gt-md="row" style="background-color: white;"  >
+          <div flex-gt-md="50" class="sg-logo flex-gt-md-50" >
+            <div layout="row" class="md-padding layout-row">
+              <div class="md-flex hide show-gt-md"></div>
+              <img src="icons/sogo.png" class="md-margin" alt="*">
+            </div>
+            
+          </div>
+          <div flex-gt-md="50" class="sg-login md-default-theme md-bg md-accent flex-gt-md-50"style="background-color: #1A92EE;">
+            <div id="login" class="sg-login-content md-padding" >
+              <form method="post" layout="column" name="loginForm" class="layout-column ng-dirty ng-valid-parse ng-invalid ng-invalid-required" style="">
+                
+                <!-- ngIf: !app.loginState --><div ng-if="!app.loginState" class="ng-scope">
+                  <md-input-container class="md-block md-auto-horizontal-margin md-icon-left md-input-invalid" style="">
+                    <label for="input_1" class="md-required">Nom d'utilisateur</label>
+                    <md-icon class="material-icons" role="img" aria-label="person">person</md-icon>
+                    <input type="text" name="3.1.1.3.3.1.4.4.1.3.3.1.1.3.1.5" value="" autocorrect="off" ng-model="app.creds.username" ng-required="true" autocapitalize="off" ng-change="app.usernameChanged()" ng-blur="app.retrievePasswordRecoveryEnabled()" class="md-input ng-touched ng-dirty ng-valid-parse ng-empty ng-invalid ng-invalid-required" id="input_1" required="required" aria-invalid="true" style=""><div class="md-errors-spacer"></div>
+                  </md-input-container>
+                  <md-input-container class="md-block md-auto-horizontal-margin md-icon-left md-icon-right md-input-invalid" style="">
+                    <label for="passwordField" class="md-required">Mot de passe</label>
+                    <md-icon class="material-icons" role="img" aria-label="vpn_key">vpn_key</md-icon>
+                    <input type="password" name="3.1.1.3.3.1.4.4.1.3.3.1.1.3.3.5" value="" id="passwordField" ng-model="app.creds.password" ng-required="true" class="md-input ng-touched ng-dirty ng-valid-parse ng-empty ng-invalid ng-invalid-required" required="required" aria-invalid="true" style=""><div class="md-errors-spacer"></div>
+                    <md-icon id="password-visibility-icon" role="button" tabindex="0" class="material-icons" aria-label="visibility">visibility</md-icon>
+                  </md-input-container>
+                
+
+                  
+                  <div layout="row" layout-align="start end" class="layout-align-start-end layout-row">
+                    <md-icon class="material-icons" role="img" aria-label="language">language</md-icon>
+                    <md-input-container class="md-flex md-auto-horizontal-margin md-input-has-placeholder">
+                      <label aria-hidden="true" for="select_46">Choisir ...</label>
+                      <md-select ng-model="app.creds.language" placeholder="Français" ng-change="app.changeLanguage($event)" class="ng-pristine ng-valid md-auto-horizontal-margin ng-empty ng-touched" tabindex="0" aria-disabled="false" role="button" aria-haspopup="listbox" id="select_46" aria-invalid="false" aria-label="Français" aria-owns="select_listbox_48" style=""><md-select-value class="md-select-value md-select-placeholder" id="select_value_label_0" aria-hidden="true"><span>Français</span><span class="md-select-icon" aria-hidden="true"></span></md-select-value></md-select>
+                    </md-input-container>
+                  </div>
+
+                  
+                  
+                  
+                  <div layout="row" layout-align="center center" class="layout-align-center-center layout-row">
+                    <md-switch class="md-accent md-hue-2 md-auto-horizontal-margin ng-valid ng-dirty ng-valid-parse ng-empty ng-touched" ng-model="app.creds.rememberLogin" arial-label="Se souvenir de moi" tabindex="0" type="checkbox" role="checkbox" aria-label="Se souvenir de moi" aria-checked="false" aria-invalid="false" style=""><div class="md-container" style="touch-action: pan-x;"><div class="md-bar"></div><div class="md-thumb-container"><div class="md-thumb md-ink-ripple" md-ink-ripple="" md-ink-ripple-checkbox=""><div class="md-ripple-container"></div></div></div></div><div ng-transclude="" class="md-label">
+                      Se souvenir de moi
+                    </div></md-switch>
+                  </div>
+                </div><!-- end ngIf: !app.loginState -->
+
+                
+                <!-- ngIf: app.passwordRecovery.passwordRecoveryEnabled -->
+
+                
+                <!-- ngIf: !app.loginState --><div ng-if="!app.loginState" layout-align="space-between center" layout="row" class="ng-scope layout-align-space-between-center layout-row">
+                  <button class="md-icon-button md-button md-ink-ripple" type="button" ng-transclude="" aria-label="À propos" ng-click="app.showAbout()">
+                    <md-icon class="ng-scope material-icons" role="img" aria-hidden="true">info</md-icon>
+                  <div class="md-ripple-container"></div></button>
+                  <div>
+                    <!-- ngIf: !app.loginState --><button class="md-fab md-accent md-hue-2 md-button ng-scope md-ink-ripple" type="submit" ng-transclude="" aria-label="Connexion" ng-if="!app.loginState" sg-ripple-click="loginContent" ng-disabled="loginForm.$invalid" disabled="disabled">
+                      <md-icon class="ng-scope material-icons" role="img" aria-hidden="true">arrow_forward</md-icon>
+                    </button><!-- end ngIf: !app.loginState -->
+                  </div>
+                </div><!-- end ngIf: !app.loginState -->
+
+              <sg-ripple ng-class="{ 'md-warn': app.loginState == 'error' }" class="md-default-theme md-accent md-bg"></sg-ripple>
+              <sg-ripple-content class="md-flex ng-hide layout-fill layout-align-center-center layout-column" ng-switch="app.loginState" layout-fill="layout-fill" layout-align="center center" layout="column">
+
+                
+                <!-- ngSwitchWhen: authenticating -->
+
+                
+                
+                <!-- ngSwitchWhen: totpcode -->
+                
+                <!-- ngSwitchWhen: totpdisabled -->
+                
+
+                
+                <!-- ngSwitchWhen: passwordchange -->
+
+                
+                <!-- ngSwitchWhen: passwordwillexpire -->
+
+                
+                
+
+                
+                <!-- ngSwitchWhen: logged -->
+
+                <!-- ngSwitchWhen: message -->
+
+                
+                <!-- ngSwitchWhen: error -->
+
+              </sg-ripple-content>
+            </form>
+
+            </div>
+          </div>
+        </div>
+    </md-content>
+    
+  </main>
+          <script type="text/javascript">
+            var ApplicationBaseURL = '/SOGo/so/';
+            var ResourcesURL = '/SOGo.woa/WebServerResources';
+            var minimumSearchLength = 2;
+            var minimumSearchLengthLabel = 'Entrez au moins 2 caract&#232;res';
+            
+              var DebugEnabled = true;
+            
+            
+            
+            
+              var IsSuperUser = false;
+            
+            
+            
+              var usesCASAuthentication = false;
+            
+            
+            
+              var usesSAML2Authentication = false;
+            
+            
+
+            // This is the equivalent of an AJAX call to /SOGo/so/_UserLogin_/date
+            var currentDay = {"year":"2024","weekday":"Jeudi","secondsBeforeTomorrow":27852,"abbr":{"month":"Aoû","weekday":"Jeu"},"day":"22","month":"Août"};
+
+            var clabels = {"Address Book":"Carnet d'adresses","Issuer":"Émetteur","delegate is organizer":"L'adresse spécifiée correspond à l'organisateur. Veuillez entrer un autre délégué.","Success":"Succès","You cannot (un)subscribe to a folder that you own!":"Vous ne pouvez pas vous (dés)abonner à vos propres dossiers!","Potentially anyone on the Internet will be able to access your calendar \"%{0}\", even if they do not have an account on this system. Is this information suitable for the public Internet?":"N'importe quel internaute aura potentiellement accès à votre calendrier «%{0}», même s'il n'a pas de compte sur ce système. Est-ce que le contenu de votre calendrier est adapté à une telle visibilité?","July":"Juillet","Loading":"Chargement","You cannot create a list in a shared address book.":"Impossible de créer une liste dans un dossier partagé.","passwordRecovery_SecretQuestion3":"Quel est votre film préféré ?","Vacation message is enabled":"Votre message d'absence prolongée est activé","emailAddress":"Adresse courriel","Snooze":"Rappel","a2_Monday":"Lu","passwordRecovery_SecondaryEmail":"E-mail secondaire","key_delete":"Suppr.","Unable to unsubscribe from that folder!":"Impossible de se désabonner de ce dossier.","10 minutes":"10 minutes","key_left":"←","Any Authenticated User":"Tout utilisateur identifié","View next item":"Voir l'item suivant","February":"Février","45 minutes":"45 minutes","S/MIME Certificate":"Certificat S/MIME","Unable to subscribe to that folder!":"Impossible de s'abonner à ce dossier.","Move forward":"Reculer","key_shift+space":"maj. + espace","A folder by that name already exists.":"Un dossier du même nom existe déjà.","noJavascriptError":"SOGo requiert l'utilisation de Javascript. Veuillez vous assurer que cette option est disponible et activée dans votre fureteur.","Snooze for ":"Rappel dans ","September":"Septembre","You are not allowed to access this module or this system. Please contact your system administrator.":"Vous n'êtes pas autorisé à accéder à ce module ou ce système. Veuillez contacter votre administrateur système.","Sep":"Sep","December":"Décembre","5 minutes":"5 minutes","Home":"Accueil","You have already subscribed to that folder!":"Vous êtes déja abonné à ce dossier.","noEmailForDelegation":"Vous devez spécifier l'adresse de la personne à qui vous voulez déléguez votre invitation.","Apr":"Avr","June":"Juin","Expand":"Agrandir","30 minutes":"30 minutes","1 day":"1 jour","Calendar":"Agenda","key_right":"→","a2_Sunday":"Di","Work":"Travail","givenName":"Prénom","Help":"Aide","Mail":"Courrier","AM":"AM","Public Access":"Accès public","Give Access":"Appliquer les droits","Can't contact server":"Une erreur est survenue lors de la connexion au serveur. Veuillez réessayer plus tard.","key_down":"↓","File size upload limit reached":"Le fichier dépasse la taille limite permise","May":"Mai","Refresh":"Rafraîchir","Toggle item":"Basculer la sélection","Dec":"Déc","streetAddress":"Adresse","Toggle visibility":"Basculer l'affichage","Confirmation":"Confirmation","organizationalUnitName":"Unité organisationnelle","User":"Utilisateur","Personal":"Personnel","You don't have the required privileges to perform the operation.":"Vous n'avez pas les privilèges requis pour effectuer cette opération.","Oct":"Oct","Right Administration":"Partage","Any user with an account on this system will be able to access your mailbox \"%{0}\". Are you certain you trust them all?":"Tout utilisateur ayant un compte sur ce système aura accès à votre boîte «%{0}». Voulez-vous vraiment faire confiance à tous ces utilisateurs?","Any user with an account on this system will be able to access your address book \"%{0}\". Are you certain you trust them all?":"Tout utilisateur ayant un compte sur ce système aura accès à votre carnet d'adresses «%{0}». Voulez-vous vraiment faire confiance à tous ces utilisateurs?","organizationName":"Société","Jul":"Jul","Save":"Enregistrer","a2_Wednesday":"Me","Yes":"Oui","Toggle Menu":"Menu bascule","Wrong username or password.":"Mauvais nom d'utilisateur ou mot de passe.","Password":"Mot de passe","Administration":"Administration","The user rights cannot be edited for this object!":"Les droits sur cet objet ne peuvent pas être édités.","Add...":"Ajouter...","Add previous item to selection":"Ajouter l'item précédant à la section","Later":"Peut attendre","Return Receipt Sent":"Accusé de réception envoyé","Start":"Début","Move backward":"Avancer","Reduce":"Réduire","Error":"Erreur","passwordRecovery_Disabled":"Désactivée","Preferences":"Préférences","View previous item":"Voir l'item précédant","Anybody accessing this resource from the public area":"Quiconque accède à cette ressource via l'espace public","OK":"OK","a2_Friday":"Ve","delegate is a participant":"Le délégué est déjà un participant.","Feb":"Fév","Owner":"Propriétaire","a2_Saturday":"Sa","passwordRecovery_SecretQuestion1":"Quel est le nom de votre premier animal de compagnie ?","key_shift+down":"maj. + ↓","1 hour":"1 heure","Remove":"Enlever","Subscribe User":"Abonner l'utilisateur","Subject Name":"Sujet","Nov":"Nov","key_up":"↑","Any user not listed above":"Tout utilisateur du système non-listé ci-dessus","passwordRecovery_SecretQuestion":"Question secrète","commonName":"Identité","a2_Thursday":"Je","Keyboard Shortcuts":"Raccourcis clavier","Reminder":"Rappel","stateOrProvinceName":"État ou province","Access Rights":"Droits d'accès","Mar":"Mar","No such user.":"Aucun utilisateur trouvé.","a2_Tuesday":"Ma","Edit User Rights":"Édition des droits","March":"Mars","Potentially anyone on the Internet will be able to access your address book \"%{0}\", even if they do not have an account on this system. Is this information suitable for the public Internet?":"N'importe quel internaute aura potentiellement accès à votre carnet d'adresses «%{0}», même s'il n'a pas de compte sur ce système. Est-ce que le contenu de votre calendrier est adapté à une telle visibilité?","April":"Avril","Show or hide this help":"Afficher ou cache cette aide","November":"Novembre","key_shift+up":"maj. + ↑","October":"Octobre","You cannot subscribe to a folder that you own!":"Impossible de vous abonner à un dossier qui vous appartient.","localityName":"Localité","Sorry, the user rights can not be configured for that object.":"Désolé, les droits d'accès ne peuvent être configurés pour cet objet.","key_backspace":"⌫","Username":"Nom d'utilisateur","Enter at least %{minimumSearchLength} characters":"Entrez au moins %{minimumSearchLength} caractères","January":"Janvier","Forwarded":"Transféré","Toggle range of items":"Basculer l'étendue des éléments","Jun":"Jun","August":"Août","Add next item to selection":"Ajouter l'item suivant à la sélection","key_space":"espace","passwordRecovery_SecretQuestion2":"Quelle était votre première voiture ?","countryName":"Pays","hotkey_search":"s","PM":"PM","Aug":"Aoû","delegate is a group":"L'adresse spécifiée correspond à un groupe. Vous ne pouvez déléguer qu'à une personne.","Open Calendar":"Ouvrir le calendrier","Cancel":"Annuler","surname":"Nom de famille","Disconnect":"Quitter","You cannot unsubscribe from a folder that you own!":"Impossible de vous désabonner d'un dossier qui vous appartient.","To Do":"À faire","Due Date":"Échéance","Add User":"Ajouter un utilisateur","Important":"Important","No":"Non","15 minutes":"15 minutes","Warning":"Avertissement","Any user with an account on this system will be able to access your calendar \"%{0}\". Are you certain you trust them all?":"Tout utilisateur ayant un compte sur ce système aura accès à votre calendrier «%{0}». Voulez-vous vraiment faire confiance à tous ces utilisateurs?","Publish the Free/Busy information":"Publier l'occupation du temps","Unable to rename that folder!":"Impossible de renommer ce dossier.","Close":"Fermer","Keep Private":"Garder privé","An error occured, please try again.":"Une erreur est survenue, essayez à nouveau.","Jan":"Jan","Location":"Lieu","noJavascriptRetry":"Réessayer","Log Console (dev.)":"Journal (dév.)"};
+            var labels = {"Your account was locked due to too many failed attempts.":"Votre compte a été bloqué suite à un nombre élevé de tentatives d'authentification infructueuses.","Icelandic":"Íslenska","Galician":"Galego","Indonesian":"bahasa Indonesia","NorwegianNynorsk":"Norsk nynorsk","Bosnian":"Bosanski","Retry":"Réessayer","Swedish":"Svenska","Missing search parameter":"Paramètre de recherche manquant","English":"English","The passwords do not match. Please try again.":"Les mots de passe ne sont pas identiques. Essayez de nouveau.","Authentication Failed":"L'authentification a échoué","BrazilianPortuguese":"Português brasileiro","Close":"Fermer","Domain":"Domaine","AboutBox":"Développé par la compagnie Inverse et Alinto, SOGo est un collecticiel complet mettant l'emphase sur la simplicité et l'extensibilité.<br/><br/>\nSOGo propose une interface Web moderne basée sur AJAX ainsi qu'un accès par de nombreux clients natifs (comme Mozilla Thunderbird et Lightning et Apple iCal) par l'utilisation de protocoles standards tel que CalDAV et CardDAV.<br/><br/>\nCe programme est un logiciel libre ; vous pouvez le redistribuer et/ou le modifier conformément aux dispositions de la <a href=\"http://gnu.org/licenses/gpl.html\">Licence Publique Générale GNU</a>, telle que publiée par la Free Software Foundation ; version 2 de la licence, ou encore (à votre choix) toute version ultérieure. Ce programme est distribué dans l’espoir qu’il sera utile, mais SANS AUCUNE GARANTIE.<br/><br/>\nPlusieurs <a href=\"http://www.sogo.nu/en/support/community.html\">types de soutien</a> sont offerts.","Kazakh":"Қазақ","cookiesNotEnabled":"Vous ne pouvez vous authentifier car les témoins (cookies) de votre navigateur Web sont désactivés. Activez les témoins dans votre navigateur Web et essayez de nouveau.","Croatian":"Hrvatski","Verification Code":"Code de vérification","Password must not be empty.":"Le mot de passe ne doit pas être vide.","Please wait...":"Veuillez patienter...","minutes":"minutes","Portuguese":"Português","Password about to expire":"Expiration du mot de passe","Download":"Télécharger","About":"À propos","Enter the 6-digit verification code from your TOTP application.":"Saisissez le code de vérification à 6 chiffres de votre application TOTP.","Missing type parameter":"Paramètre de type manquant","Wrong username or password.":"Mauvais nom d'utilisateur ou mot de passe.","Back":"Retour","Your account was locked due to an expired password.":"Votre compte a été bloqué car votre mot de passe est expiré.","Login failed due to unhandled error case:":"Échec de la connexion :","Password Grace Period":"Période de grâce pour le mot de passe","Language":"Langue","Change your Password":"Changez votre mot de passe","Arabic":"العربية","alternativeBrowserSafari":"Comme alternative, vous pouvez aussi utiliser Safari.","Slovak":"Slovensky","Password recovery email in error":"Erreur lors de l'envoi de l'email de récupération","Password lost":"Mot de passe perdu","hours":"heures","Japanese":"日本語","You have %{0} logins remaining before your account is locked. Please change your password in the preference dialog.":"Vous avez %{0} connexions restantes avant que votre compte ne soit bloqué. Veuillez changer votre mot de passe à partir du panneau de préférences.","Answer":"Réponse","A link will be sent to %{0}":"Un lien va être envoyé à %{0}","Username":"Nom d'utilisateur","Unhandled HTTP error code: %{0}":"Code HTTP non-géré: %{0}","SpanishArgentina":"Español (Argentina)","Invalid configuration for email password recovery":"Configuration invalide pour la récupération de mot de passe par e-mail","Unhandled error response":"Erreur inconnue","Unhandled policy error: %{0}":"Erreur inconnue pour le ppolicy: %{0}","Password change failed - Password is too short":"Échec au changement - mot de passe trop court","Finnish":"Suomi","Two-factor authentication has been disabled. Visit the Preferences module to restore two-factor authentication and reconfigure your TOTP application.":"L'authentification a deux facteurs a été désactivée pour votre compte. Veuillez visiter vos préférences pour restaurer son utilisation et reconfigurer votre application TOTP.","browserNotCompatible":"La version de votre navigateur Web n'est présentement pas supportée par ce site. Nous recommandons d'utiliser Firefox. Vous trouverez un lien vers la plus récente version de ce navigateur ci-dessous:","Serbian":"Српски","Password change failed - Permission denied":"Échec au changement - mauvaises permissions","Welcome":"Bienvenue","alternativeBrowsers":"Comme alternative, vous pouvez aussi utiliser les navigateurs suivants:","Secondary e-mail":"E-mail secondaire","Welsh":"Cymraeg","Polish":"Polski","Confirmation":"Confirmation","Password change is not supported.":"Changement de mot de passe non-supporté.","SerbianLatin":"Srpski","title":"SOGo","Czech":"Česky","Hungarian":"Magyar","ChineseChina":"简体中文","Your password has expired, please enter a new one below":"Votre mot de passe est expiré, veuillez entrer un nouveau mot de passe","Password reset":"Réinitialisation de mot de passe","Remember username":"Se souvenir de moi","Romanian":"Română","Invalid secret question answer":"La réponse à la question secrète n'est pas valide","Password change failed - Insufficient password quality":"Échec au changement - qualité insuffisante","Connect":"Connexion","Login failed due to unhandled error case":"Authentification a échouée pour une raison inconnue","_loadedFrameworks":["MainUI"],"TurkishTurkey":"Türkçe (Türkiye)","German":"Deutsch","Danish":"Dansk (Danmark)","Slovenian":"Slovenščina","SpanishSpain":"Español (España)","Hi %{0},\nThere was a request to change your password!\n\nIf you did not make this request then please ignore this email.\n\nOtherwise, please click this link to change your password: %{1}":"Bonjour %{0},\nUne demande de changement de mot de passe a été initiée.\n\nSi vous n'êtes pas à l'origine de cet e-mail, n'en tenez pas compte.\n\nSi vous en êtes bien à l'origine, veuillez cliquer sur le lien ci-dessous pour modifier votre mot de passe: %{1}","seconds":"secondes","Password change failed - Password is in history":"Échec au changement - mot de passe dans l'historique","Password change failed":"Échec au changement","French":"Français","Password":"Mot de passe","Montenegrin":"Crnogorski","Next":"Suivant","New password":"Nouveau mot de passe","Your password is going to expire in %{0} %{1}.":"Votre mot de passe va expirer dans %{0} %{1}.","Macedonian":"Македонски","Password change failed - Password is too young":"Échec au changement - mot de passe trop récent","Cancel":"Annuler","days":"jours","Dutch":"Nederlands","Ukrainian":"Українська","Bulgarian":"Български","Russian":"Русский","Authenticating":"Authentification en cours","ChineseTaiwan":"正體中文","choose":"Choisir ...","Hebrew":"עברית","You provided an invalid TOTP key.":"Vous avez fourni une clé TOTP non valide.","A password reset link has been sent, please check your recovery e-mail mailbox and click on the link":"Un lien vous permettant de redéfinir votre mot de passe vous a été envoyé, veuillez vérifier votre boite e-mail de récupération","The password was changed successfully.":"Votre mot de passe a bien été changé.","No password recovery method has been defined for this user":"Aucune méthode de récupération de mot de passe n'a été définie pour cet utilisateur","Basque":"Euskara","NorwegianBokmal":"Norsk bokmål","Please enter a new password below":"Veuillez saisir un nouveau mot de passe ci-dessous","Italian":"Italiano","Catalan":"Català","Latvian":"Latviešu","Lithuanian":"Lietuvių"};
+          </script>
+
+  
+        <div class="md-select-menu-container md-leave" aria-hidden="false" role="presentation" id="select_container_47" style="display: none;">  <md-select-menu role="presentation" class="_md md-overflow" style="transform-origin: 122px 24px;"><md-content role="listbox" tabindex="-1" aria-multiselectable="false" class="_md" aria-label="Choisir ..." id="select_listbox_48" aria-activedescendant="select_option_2">
+                        
+                          <md-option value="Indonesian" tabindex="0" class="md-ink-ripple md-focused" role="option" id="select_option_2"><div class="md-text">
+                            bahasa Indonesia
+                          </div></md-option>
+                        
+                          <md-option value="Bosnian" tabindex="0" class="md-ink-ripple" role="option" id="select_option_3"><div class="md-text">
+                            Bosanski
+                          </div></md-option>
+                        
+                          <md-option value="Catalan" tabindex="0" class="md-ink-ripple" role="option" id="select_option_4"><div class="md-text">
+                            Català
+                          </div></md-option>
+                        
+                        
+                      </md-content>
+                    </md-select-menu>
+        </div>
+                    
+                    
+    </body>
+</html>

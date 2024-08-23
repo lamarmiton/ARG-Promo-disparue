@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de Connexion</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0e0e0; /* Fond gris très clair */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .banner {
+            width: 100%;
+            height: 338px; /* Hauteur du bandeau */
+            display: flex;
+            position: relative;
+            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.2); /* Ombre en haut et en bas */
+        }
+        .banner-left {
+            background-color: white;
+            flex: 1;
+            display: flex;
+            justify-content: flex-end; /* Alignement à droite */
+            align-items: center;
+            padding-right: 10px; /* Ajoute un peu d'espace à droite */
+        }
+        .banner-right {
+            background-color: #007bff; /* Bleu */
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+        }
+        .banner-left img {
+            width: 320px;
+            height: 175px;
+        }
+        .login-container {
+            background: transparent; /* Formulaire complètement transparent */
+            padding: 10px;
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-left: 5%; /* Réaligner le formulaire à gauche de la séparation */
+            transform: none; /* Supprimer la transformation X pour un alignement précis */
+        }
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+            width: 100%;
+        }
+        .form-group label {
+            display: none; /* Suppression des labels visibles */
+        }
+        .form-group input,
+        .form-group select {
+            width: calc(100% - 30px); /* Champs de formulaire occupent toute la largeur */
+            padding-left: 0; /* Enlève le padding gauche du menu déroulant */
+            margin-left: 40px; /* Décalage du menu déroulant à droite de l'icône */
+            border: none;
+            border-bottom: 2px solid #ccc; /* Soulignement des champs */
+            background-color: transparent; /* Fond transparent */
+            color: #fff;
+            font-size: 16px; /* Taille de la police */
+            box-sizing: border-box; /* Inclut le padding dans la largeur totale */
+        }
+        .form-group select {
+            padding-left: 0; /* Enlève le padding gauche du menu déroulant */
+            margin-left: 40px; /* Décalage du menu déroulant à droite de l'icône */
+            border: none; /* Supprime la bordure par défaut */
+            background-color: transparent; /* Fond transparent */
+            border-bottom: 2px solid #ccc; /* Soulignement des menus déroulants */
+            appearance: none; /* Enlève le style par défaut des navigateurs */
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-bottom: 2px solid #fff; /* Soulignement des champs au focus */
+        }
+        .form-group img {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+        }
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+        .password-container input {
+            padding-right: 40px; /* Ajoute de l'espace pour l'icône de l'œil */
+        }
+        .eye-icon {
+            position: absolute;
+            right: 0; /* Aligne l'icône à droite du champ */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 1; /* Assure que l'icône reste au-dessus du champ */
+            margin-left: 90%;
+        }
+        .form-group .submit-container {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .form-group .submit-container button {
+            /*width: 56px; /* Largeur du bouton rond */
+            /*height: 56px; /* Hauteur du bouton rond */
+            /*border-radius: 50%; /* Bouton rond */
+            display: flex;
+            /*justify-content: center; /**/
+            align-items: center;
+            /*background-color: #0056b3; /* Bleu légèrement plus foncé */
+            /*color: #333; /* Couleur de l'icône (gris foncé) */
+            border: none;
+            /*box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);*/
+            cursor: pointer;
+            outline: none;
+            /*transition: background-color 0.3s;*/
+        }
+        .form-group .submit-container button .material-icons {
+            font-size: 24px; /* Taille de l'icône */
+        }
+        .form-group .submit-container button:hover {
+            background-color: #004494; /* Couleur au survol */
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="banner-left">
+            <img src="icons/sogo.png" alt="Logo Sogo">
+        </div>
+        <div class="banner-right">
+            <div class="login-container">
+                <form action="/login" method="post">
+                    <div class="form-group">
+                        <img src="icons/user.png" alt="Icône utilisateur">
+                        <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" required>
+                    </div>
+                    <div class="form-group password-container">
+                        <img src="icons/mdp.png" alt="Icône mot de passe">
+                        <input type="password" id="password" name="password" placeholder="Mot de passe" required>
+                        <img src="icons/eye.png" alt="Afficher mot de passe" class="eye-icon" id="togglePassword">
+                    </div>
+                    <div class="form-group">
+                        <img src="icons/langue.png" alt="Icône langue">
+                        <select id="language" name="language" required>
+                            <option value="fr">Français</option>
+                            <option value="en">Anglais</option>
+                            <option value="es">Espagnol</option>
+                        </select>
+                    </div>
+                    <div class="form-group submit-container">
+                        <button type="submit">
+                            <img src="icons/info.png"></img> <!-- material-icons">arrow_forward</span>--> <!-- Flèche dans le bouton -->
+                        </button>
+                    </div>
+                    <div class="error" id="error-message">
+                        <!-- Message d'erreur s'affichera ici -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript pour basculer l'affichage du mot de passe
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordField = document.getElementById('password');
+        
+        togglePassword.addEventListener('click', () => {
+            const type = passwordField.type === 'password' ? 'text' : 'password';
+            passwordField.type = type;
+            togglePassword.src = type === 'password' ? 'icons/eye.png' : 'icons/eye-off.png'; // Changer l'icône en fonction de l'état
+        });
+    </script>
+</body>
+</html>
