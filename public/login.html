@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
     <link rel="stylesheet" href="css/style.css">
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             fetch('/status', {
@@ -35,55 +36,94 @@
         </ul>
     </nav>
 
-    <h2>Page de Connexion</h2>
-    <form id="loginForm">
-        <div>
-            <label for="user">Nom d'utilisateur:</label>
-            <input type="text" id="user" name="user" required>
+    <div class="login-wrapper">
+        <div class="login-container">
+            <img src="img/logo.png" alt="Logo" class="logo">
+            <h2>Connexion</h2>
+            <form id="loginForm">
+                <div>
+                    <label for="user">Nom d'utilisateur:</label>
+                    <input type="text" id="user" name="user" required>
+                </div>
+                <div>
+                    <label for="password">Mot de passe:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Connexion</button>
+                <div class="loading-spinner" id="loadingSpinner">
+                    <div id="loadingPercentage">0%</div>
+                </div>
+                <div id="error-message" class="error-message"></div>
+            </form>
         </div>
-        <div>
-            <label for="password">Mot de passe:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button type="submit">Connexion</button>
-    </form><script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = {
-                user: document.getElementById('user').value,
-                password: document.getElementById('password').value
-            };
-            fetch('/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData),
-                credentials: 'include'
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erreur réseau');
-                }
-                const contentType = response.headers.get('content-type');
-                if (contentType && contentType.includes('application/json')) {
-                    return response.json();
-                } else {
-                    throw new Error('La réponse du serveur n\'est pas au format JSON');
-                }
-            })
-            .then(data => {
+    </div>
+
+    <footer>
+        <p>© 2012 0b1101</p>
+    <script>
+    
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = {
+            user: document.getElementById('user').value,
+            password: document.getElementById('password').value
+        };
+    
+        const errorMessage = document.getElementById('error-message');
+        errorMessage.style.display = 'none';
+        const spinner = document.getElementById('loadingSpinner');
+        const percentage = document.getElementById('loadingPercentage');
+
+        spinner.style.display = 'block';
+        percentage.style.display = 'block';
+
+        let start = 0;
+        const duration = 1000; 
+        const increment = 100 / (duration / 28); 
+        let stopAnimation = false;
+
+        const animatePercentage = () => {
+            if (start <= 100 && !stopAnimation) {
+                percentage.textContent = `${Math.round(start)}%`;
+                start += increment;
+                setTimeout(animatePercentage, 100);
+            }
+        };
+
+        animatePercentage();
+
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData),
+            credentials: 'include'
+        })
+        .then(response => response.json())
+        .then(data => {
+            const letters = data.letters;
+            setTimeout(function() {
+                stopAnimation = true;
+                spinner.style.display = 'none';
+                percentage.style.display = 'none';
                 if (data.success) {
                     window.location.href = 'index.html';
                 } else {
-                    alert('Nom d\'utilisateur ou mot de passe incorrect');
+                    errorMessage.textContent = data.message;
+                    errorMessage.style.display = 'block';
                 }
-            })
-            .catch(error => {
-                console.error('Erreur:', error);
-                alert('Une erreur est survenue lors de la connexion');
-            });
+            }, letters * 400 + 100);
+        })
+        .catch(error => {
+            setTimeout(function() {
+                spinner.style.display = 'none';
+                percentage.style.display = 'none';
+                errorMessage.textContent = 'Une erreur est survenue. Veuillez réessayer.';
+                errorMessage.style.display = 'block';
+            }, 1000);
         });
+    });
     </script>
 </body>
 </html>
