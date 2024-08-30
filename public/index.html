@@ -54,7 +54,7 @@
         Wr fhvf vpv, znvagranag, rg p'rfg gbhg pr dhv pbzcgr. Yrf ibvk crhirag pevre, yrf qrzbaf crhirag ehtve, znvf wr erfgr qrobhg. Wr fhvf ha threevre, ha cbrgr, ha erirhe. Rg wr pbagvahrenv q'rpever, qr ivier, qr erfcvere.</p>
 
     <footer>
-        <p>© 2012 0b1101</p>
+        <p>© <a href="#" id="pdf-link" class="hidden-link">2012 0b1101</a></p>
 
         <!-- Je suis le nombre d'heures sur une horloge dans certains pays, le nombre de cycles lunaires dans une année, et le nombre de disciples avec leur maître lors du dernier repas.-->
         <div id="formulaire-dechiffrement">
@@ -97,6 +97,10 @@
                     username.textContent = "Sophie";
 
                     userProfile.style.display = 'flex';
+
+                    var pdfLink = document.getElementById('pdf-link');
+                    pdfLink.href = '/fichiers/590306858.pdf'; 
+                    pdfLink.target = '_blank'; 
                 }
             })
             .catch(error => console.error('Erreur:', error));

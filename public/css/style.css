@@ -14,6 +14,17 @@
     50% { filter: hue-rotate(1deg); }
 }
 
+.hidden-link {
+    text-decoration: none; 
+    color: inherit; 
+    cursor: default;
+}
+
+.hidden-link:hover {
+    text-decoration: none; 
+    cursor: default;
+}
+
 .vhs-scanlines {
     position: absolute;
     top: 0;
