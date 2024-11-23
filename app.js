@@ -26,11 +26,29 @@ function checkAuth(req, res, next) {
   }
 }
 
+function checkSecondAuth(req, res, next) {
+  if (req.session.secondAuth) {
+    next();
+  } else {
+    res.redirect('/wali/authentification');
+  }
+}
+
 app.get('/', (req, res) => {
   if (req.session.userId) {
     res.send('Bienvenue, utilisateur connecté !');
   } else {
     res.send('Bienvenue, visiteur ! Veuillez vous connecter.');
+  }
+});
+
+app.post('/second-auth', (req, res) => {
+  const { username, password } = req.body;
+  if (username === 'e.henriot' && password === 'anthophila') {
+    req.session.secondAuth = true;
+    res.json({ success: true });
+  } else {
+    res.json({ success: false, message: 'Nom d\'utilisateur ou mot de passe incorrect' });
   }
 });
 
@@ -119,16 +137,24 @@ app.get('/search', checkAuth, (req, res) => {
     if (err) {
       return res.status(500).send('Erreur de serveur');
     }
-    const closestMatch = files.find(file => file.toLowerCase().includes(query));
+    const exactMatch = files.find(file => file.toLowerCase().replace('.html', '') === query);
 
-    console.log(closestMatch);
-    if (closestMatch) {
-      const filePath = path.join('profils', closestMatch).replace('.html', '');
-      res.json({ results: [ { name: closestMatch, path: filePath } ] });
+    console.log(exactMatch);
+    if (exactMatch) {
+      const filePath = path.join('profils', exactMatch).replace('.html', '');
+      res.json({ results: [ { name: exactMatch, path: filePath } ] });
     } else {
       res.status(404).send('Profil non trouvé');
     }
   });
+});
+
+app.get('/wali-m.isae.fr/SOGo', checkSecondAuth, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'wali', 'users', 'neurologue.html'));
+});
+
+app.get('/wali/authentification', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'wali', 'authentication.html'));
 });
 
 app.get('/photos', checkAuth, (req, res) => {

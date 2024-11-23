@@ -32,6 +32,6 @@ document.querySelector('.search-form').addEventListener('submit', function(event
         .catch(error => {
             console.error('Erreur:', error);
             const resultsContainer = document.getElementById('search-results');
-            resultsContainer.textContent = 'Une erreur est survenue lors de la recherche.';
+            resultsContainer.textContent = 'Aucun sujet avec ce matricule.';
         });
 });
